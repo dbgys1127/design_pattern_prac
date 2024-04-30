@@ -1,3 +1,5 @@
+package ch3_decorate;
+
 import ch3_decorate.beverage.Beverage;
 import ch3_decorate.beverage.DarkRoast;
 import ch3_decorate.beverage.Espresso;
