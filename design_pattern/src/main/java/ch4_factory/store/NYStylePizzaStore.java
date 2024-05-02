@@ -1,23 +1,30 @@
 package ch4_factory.store;
 
+import ch4_factory.ingredient.factory.NYPizzaIngredientFactory;
+import ch4_factory.ingredient.factory.PizzaIngredientFactory;
 import ch4_factory.product.*;
-import ch4_factory.product.ny.NYStyleCheesePizza;
-import ch4_factory.product.ny.NYStyleClamPizza;
-import ch4_factory.product.ny.NYStylePepperoniPizza;
-import ch4_factory.product.ny.NYStyleVeggiePizza;
-
 public class NYStylePizzaStore extends PizzaStore{
     @Override
     protected Pizza createPizza(String type) {
+        Pizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
         if (type.equals("cheese")) {
-            return new NYStyleCheesePizza();
+            pizza = new CheesePizza(ingredientFactory);
+            pizza.setName("뉴욕 스타일 치즈 피자");
+            return pizza;
         } else if (type.equals("pepperoni")) {
-            return new NYStylePepperoniPizza();
+            pizza = new PepperoniPizza(ingredientFactory);
+            pizza.setName("뉴욕 스타일 페퍼로니 피자");
+            return pizza;
         }else if (type.equals("clam")) {
-            return new NYStyleClamPizza();
+            pizza = new ClamPizza(ingredientFactory);
+            pizza.setName("뉴욕 스타일 조개 피자");
+            return pizza;
         }else if (type.equals("veggie")) {
-            return new NYStyleVeggiePizza();
+            pizza = new VeggiePizza(ingredientFactory);
+            pizza.setName("뉴욕 스타일 야채 피자");
+            return pizza;
         }
-        return null;
+        return pizza;
     }
 }
